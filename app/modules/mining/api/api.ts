@@ -3,6 +3,7 @@ import { validateMiningData } from "../lib/validate";
 
 export const useMiningData = async () => {
     const data = await $fetch<MiningEquipment[]>("/api/mining-data");
+    console.log(data, "data");
     if (data) {
         const result = data.filter((item) => validateMiningData(item));
         return result;
