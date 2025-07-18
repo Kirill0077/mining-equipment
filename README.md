@@ -65,3 +65,16 @@ yarn preview
 # bun
 bun run preview
 ```
+
+## Vercel
+
+```
+# npm
+npm install -g vercel
+
+#auth
+vercel login 
+
+#deploy
+vercel
+```
