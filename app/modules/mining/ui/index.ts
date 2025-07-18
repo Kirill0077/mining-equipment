@@ -1,0 +1,1 @@
+export { default as MiningEquipmentTable } from "./MiningEquipmentTable.vue";
