@@ -68,13 +68,13 @@ bun run preview
 
 ## Vercel
 
-```
+```bash
 # npm
 npm install -g vercel
 
-#auth
+# auth
 vercel login 
 
-#deploy
+# deploy
 vercel
 ```
