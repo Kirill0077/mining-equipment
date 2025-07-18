@@ -25,6 +25,6 @@ export const columnsTable = ():Ref<ColumnTable[]> =>
         {
             field: "ipAddress",
             title: "IP-адрес",
-            sortable: false,
+            sortable: true,
         },
     ]);

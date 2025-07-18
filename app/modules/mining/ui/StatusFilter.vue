@@ -24,7 +24,7 @@ const handleChange = (event: Event) => {
 <template>
     <div class="relative min-w-48">
         <select
-            :value="storeTable.filterField"
+            :value="storeTable.filterValue"
             class="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:border-blue-500 sm:text-sm rounded-md"
             @change="handleChange"
         >

@@ -42,6 +42,11 @@ const columns = columnsTable();
                     {{ item.status }}
                 </span>
             </template>
+            <template #cell-ipAddress="{ item }">
+                <a :href="`https://${item.ipAddress}`" target="_blank" class="text-shadow-blue-600 hover:text-shadow-blue-500 underline">
+                    {{ item.ipAddress }}
+                </a>
+            </template>
         </DataTable>
     </div>
 </template>
