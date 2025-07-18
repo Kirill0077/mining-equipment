@@ -1,15 +1,14 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import type { IncomingMessage, ServerResponse } from "http";
 
-export default defineEventHandler(async (event) => {
-    console.log("Trying to read file...");
-    setResponseHeader(event, "Access-Control-Allow-Origin", "*");
-    setResponseHeader(event, "Access-Control-Allow-Methods", "GET, POST");
+export default async (req: IncomingMessage, res: ServerResponse) => {
     try {
+        res.statusCode = 200;
         const dataPath = resolve("./server/data/miningEquipment.json");
         const fileContent = await readFile(dataPath, "utf-8");
         const miningData = JSON.parse(fileContent);
-        return miningData;
+        res.end(JSON.stringify(miningData));
     } catch (error) {
         console.error("Error reading mining data:", error);
         throw createError({
@@ -18,4 +17,4 @@ export default defineEventHandler(async (event) => {
             message: "Failed to load mining equipment data",
         });
     }
-});
+};
