@@ -3,13 +3,25 @@ import { useMiningData } from "@/modules/mining";
 import { DataTable } from "@/components/data-table";
 import { columnsTable } from "../model";
 import StatusFilter from "./StatusFilter.vue";
+import type { MiningEquipment } from "@/modules/mining/api";
+const miningData = ref<MiningEquipment[]>([]);
+const isLoading = ref(true);
+onMounted(async () => {
+    isLoading.value = true;
+    miningData.value = await useMiningData();
+    isLoading.value = false;
+});
 
-const miningData = await useMiningData();
 const columns = columnsTable();
 //TODO: По хорошему StatusFilter должен быть в компоненте DataTable, непосредственное в хедере каждого столбца, но для упрощения задачи я оставил его здесь
 </script>
 <template>
-    <div class="min-h-screen bg-gray-50 py-6 px-12">
+    <div v-if="isLoading" class="min-h-screen bg-gray-50 py-6 px-12">
+        <div class="flex justify-center items-center h-full">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900" />
+        </div>
+    </div>
+    <div v-else class="min-h-screen bg-gray-50 py-6 px-12">
         <DataTable :items="miningData" :columns="columns" :search="true" :search-placeholder="'Поиск по модели оборудования...'">
             <template #header>
                 <StatusFilter />
