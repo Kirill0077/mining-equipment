@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 export default defineEventHandler(async () => {
+    console.log('Trying to read file...')
     try {
         const dataPath = resolve("./server/data/miningEquipment.json");
         const fileContent = await readFile(dataPath, "utf-8");
