@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
         console.error("Error reading mining data:", error);
         throw createError({
             statusCode: 500,
-            statusMessage: "Internal Server Error",
+            statusMessage: "Internal Server Errorerrr",
             message: "Failed to load mining equipment data",
         });
     }
