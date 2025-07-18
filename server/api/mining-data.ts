@@ -1,15 +1,88 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
-
-export default defineEventHandler(async (event) => {
-    console.log("Trying to read file...");
-    setResponseHeader(event, "Access-Control-Allow-Origin", "*");
-    setResponseHeader(event, "Access-Control-Allow-Methods", "GET, POST");
+export default defineEventHandler(async () => {
     try {
-        const dataPath = resolve("./server/data/miningEquipment.json");
-        const fileContent = await readFile(dataPath, "utf-8");
-        const miningData = JSON.parse(fileContent);
-        return miningData;
+        const data = [
+            {
+              "id": "1",
+              "model": "Antminer S19 Pro",
+              "hashRate": 110,
+              "powerConsumption": 3250,
+              "status": "Online",
+              "ipAddress": "192.168.1.100"
+            },
+            {
+              "id": "2",
+              "model": "Whatsminer M30S++",
+              "hashRate": 112,
+              "powerConsumption": 3472,
+              "status": "Online",
+              "ipAddress": "192.168.1.101"
+            },
+            {
+              "id": "3",
+              "model": "Avalon 1246",
+              "hashRate": 90,
+              "powerConsumption": 3420,
+              "status": "Offline",
+              "ipAddress": "192.168.1.102"
+            },
+            {
+              "id": "4",
+              "model": "Broken Miner",
+              "hashRate": 50,
+              "powerConsumption": 5000,
+              "status": "Online",
+              "ipAddress": "invalid.ip.address"
+            },
+            {
+              "id": "5",
+              "model": "Antminer T19",
+              "hashRate": 84,
+              "powerConsumption": 3150,
+              "status": "Offline",
+              "ipAddress": "192.168.1.103"
+            },
+            {
+                "id": "6",
+                "model": "BitForge X2000",
+                "hashRate": 120,
+                "powerConsumption": 3600,
+                "status": "Online",
+                "ipAddress": "192.168.1.110"
+              },
+              {
+                "id": "7",
+                "model": "HashMaster Ultra",
+                "hashRate": 95,
+                "powerConsumption": 3100,
+                "status": "Offline",
+                "ipAddress": "192.168.1.111"
+              },
+              {
+                "id": "8",
+                "model": "CryptoDrill Z5",
+                "hashRate": 105,
+                "powerConsumption": 3400,
+                "status": "Online",
+                "ipAddress": "192.168.1.112"
+              },
+              {
+                "id": "9",
+                "model": "MineCore Titan",
+                "hashRate": -88,
+                "powerConsumption": 2990,
+                "status": "Online",
+                "ipAddress": "192.168.1.113"
+              },
+              {
+                "id": "10",
+                "model": "BlockMiner Edge",
+                "hashRate": 77,
+                "powerConsumption": 2800,
+                "status": "Offline",
+                "ipAddress": "192.168.1.114"
+              }
+          ];
+          return data;
     } catch (error) {
         console.error("Error reading mining data:", error);
         throw createError({
